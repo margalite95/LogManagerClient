@@ -1,0 +1,28 @@
+<div class="div1">
+<form [formGroup]="createForm" (submit)="CreateLog()">
+<label for="Destination">Select Destination:</label>
+<select id="Destination" formControlName="Destination">
+  <option ></option>
+  <option *ngFor="let tp of TypesArray" >{{tp}}</option>
+</select>
+
+<br/>
+    <div *ngIf="createForm.get('Destination').hasError('required')"><br />
+      *Destination is required
+    </div>
+<br/>
+    <input class="inputCreate" type="text" id="LogData" formControlName="LogData"
+      placeholder="Enter Log Data"/><br /><br /><br />
+
+    <div *ngIf="createForm.get('LogData').hasError('required')"><br />
+      Enter Log Data 
+    </div>
+
+    <br />
+    <button [disabled]="!createForm.valid">Create Log</button>
+  </form>
+  <h6 *ngIf="Result?.length"><br />
+    {{Result}}
+    </h6>
+</div>
+

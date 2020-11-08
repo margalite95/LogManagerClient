@@ -1,0 +1,33 @@
+<div class="div1">
+    <form [formGroup]="getForm" (submit)="GetLog()">
+    <label for="Destination">Select Destination:</label>
+    <select id="Destination" formControlName="Destination">
+      <option ></option>
+      <option *ngFor="let tp of TypesArray" >{{tp}}</option>
+    </select>
+    
+    <br/>
+        <div *ngIf="getForm.get('Destination').hasError('required')"><br />
+          *Destination is required
+        </div>
+    <br/>
+        <input class="inputGet" type="text" id="LogName" formControlName="LogName"
+          placeholder="Enter Log Name"/><br /><br /><br />
+    
+        <div *ngIf="getForm.get('LogName').hasError('required')"><br />
+          Enter Log Name 
+        </div>
+    
+        <br />
+        <button [disabled]="!getForm.valid">Get Log</button>
+      </form>
+      
+      <p class="dotted" *ngIf="Result?.length"><br />
+        {{Result}}
+      </p>
+      <h6 *ngIf="Message?.length"><br />
+        {{Message}}
+        </h6>
+    </div>
+    
+    
